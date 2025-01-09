@@ -1,4 +1,7 @@
 using System;
+using System.Data.Common;
+using System.Diagnostics.Metrics;
+using System.Runtime;
 
 class Program
 {
@@ -6,52 +9,54 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Exercise3 Project.");
     
-        // Welcome message
-        Console.WriteLine("Welcome to the Magic Number Guessing Game!");
+//Start by asking the user for the magic number. (In future steps, we will change this to have the computer generate a random number, but to get started, we'll just let the user decide what it is.)
+//Ask the user for a guess.
+//Using an if statement, determine if the user needs 
+//to guess higher or lower next time, or tell them if they guessed it.
+//At this point, you won't have any loops.
+       
+    //Ask user for a guess
+        Console.WriteLine ("Welcome to guess the Magic number game!");
+        //Asking user for magic number 
+        //Console.Write("Please input a magic number:");
+        //int magic = int.Parse(Console.ReadLine());
+        //Changed it to random
+         //Stretch count the amount of guesses 
+        int guessAmount=0;
         
-        // Stretch: Count the amount of guesses 
-        string keepGuess = "yes";
+        
+        Random randomGenerator = new Random();
+        int magic = randomGenerator.Next(1,100);
+        //ask user to input gress for the number
+        Console.Write("Please give me a guess for the magic number?");
+        int number= int.Parse(Console.ReadLine());
+        //When  the program begins it doesn't tell you higher
+        //or lower on the first one. I wonder how to do that. 
+         //Check the guess with if statement
+         guessAmount +=1;
+         
+           while (magic != number)
+           {
+             //ask user to input gress for the number
+             Console.Write("Please give me a guess for the magic number?");
+             number= int.Parse(Console.ReadLine());
+             guessAmount += 1;
+             if (magic==number)
+             {
+                 Console.WriteLine("You did it!");
 
-        while (keepGuess.ToLower() == "yes")
-        {
-            int guessAmount = 0;
-            Random randomGenerator = new Random();
-            int magic = randomGenerator.Next(1, 100);
-            int number = 0; // Initialize the number to avoid errors
+             }
+             else if ( magic > number)
+             {
+                 Console.WriteLine("Higher!");
 
-            Console.WriteLine("A new magic number has been generated between 1 and 100!");
-            
-            // Main guessing loop
-            while (magic != number)
-            {
-                // Ask user for a guess
-                Console.Write("Please give me a guess for the magic number: ");
-                number = int.Parse(Console.ReadLine());
-                guessAmount++;
+             }
+             else
+             {
+                 Console.WriteLine("Lower!");
 
-                // Check the guess
-                if (magic == number)
-                {
-                    Console.WriteLine("You did it! Congratulations!");
-                }
-                else if (magic > number)
-                {
-                    Console.WriteLine("Higher! Try again.");
-                }
-                else
-                {
-                    Console.WriteLine("Lower! Try again.");
-                }
+             }
+             Console.WriteLine($"The amount of guesses it took was {guessAmount}.");
             }
-
-            // Display total guesses
-            Console.WriteLine($"The amount of guesses it took was {guessAmount}.");
-
-            // Ask if they want to play again
-            Console.Write("Would you like to keep playing? (yes/no): ");
-            keepGuess = Console.ReadLine().ToLower();
-        }
-
-        Console.WriteLine("Thank you for playing! Goodbye.");
-    }
+   }
 }
