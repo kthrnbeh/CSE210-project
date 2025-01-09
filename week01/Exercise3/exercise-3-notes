@@ -5,30 +5,53 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the Exercise3 Project.");
-        
+    
         // Welcome message
-        Console.WriteLine("Welcome to the magic number guessing game!");
+        Console.WriteLine("Welcome to the Magic Number Guessing Game!");
+        
+        // Stretch: Count the amount of guesses 
+        string keepGuess = "yes";
 
-        // Ask user for the magic number (input converted to an integer)
-        Console.Write("Please input a magic number: ");
-        int magic = int.Parse(Console.ReadLine());
+        while (keepGuess.ToLower() == "yes")
+        {
+            int guessAmount = 0;
+            Random randomGenerator = new Random();
+            int magic = randomGenerator.Next(1, 100);
+            int number = 0; // Initialize the number to avoid errors
 
-        // Ask user for a guess (input converted to an integer)
-        Console.Write("Please give me a guess for the magic number: ");
-        int number = int.Parse(Console.ReadLine());
+            Console.WriteLine("A new magic number has been generated between 1 and 100!");
+            
+            // Main guessing loop
+            while (magic != number)
+            {
+                // Ask user for a guess
+                Console.Write("Please give me a guess for the magic number: ");
+                number = int.Parse(Console.ReadLine());
+                guessAmount++;
 
-        // Check the guess using if statements
-        if (number == magic)
-        {
-            Console.WriteLine("You guessed it! Congratulations!");
+                // Check the guess
+                if (magic == number)
+                {
+                    Console.WriteLine("You did it! Congratulations!");
+                }
+                else if (magic > number)
+                {
+                    Console.WriteLine("Higher! Try again.");
+                }
+                else
+                {
+                    Console.WriteLine("Lower! Try again.");
+                }
+            }
+
+            // Display total guesses
+            Console.WriteLine($"The amount of guesses it took was {guessAmount}.");
+
+            // Ask if they want to play again
+            Console.Write("Would you like to keep playing? (yes/no): ");
+            keepGuess = Console.ReadLine().ToLower();
         }
-        else if (number < magic)
-        {
-            Console.WriteLine("Higher! Try guessing a bigger number next time.");
-        }
-        else
-        {
-            Console.WriteLine("Lower! Try guessing a smaller number next time.");
-        }
+
+        Console.WriteLine("Thank you for playing! Goodbye.");
     }
 }
