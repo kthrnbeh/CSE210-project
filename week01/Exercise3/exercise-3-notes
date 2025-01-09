@@ -1,0 +1,34 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello World! This is the Exercise3 Project.");
+        
+        // Welcome message
+        Console.WriteLine("Welcome to the magic number guessing game!");
+
+        // Ask user for the magic number (input converted to an integer)
+        Console.Write("Please input a magic number: ");
+        int magic = int.Parse(Console.ReadLine());
+
+        // Ask user for a guess (input converted to an integer)
+        Console.Write("Please give me a guess for the magic number: ");
+        int number = int.Parse(Console.ReadLine());
+
+        // Check the guess using if statements
+        if (number == magic)
+        {
+            Console.WriteLine("You guessed it! Congratulations!");
+        }
+        else if (number < magic)
+        {
+            Console.WriteLine("Higher! Try guessing a bigger number next time.");
+        }
+        else
+        {
+            Console.WriteLine("Lower! Try guessing a smaller number next time.");
+        }
+    }
+}
