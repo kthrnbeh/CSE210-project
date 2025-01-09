@@ -31,6 +31,8 @@ class Program
         //When  the program begins it doesn't tell you higher
         //or lower on the first one. I wonder how to do that. 
         //Check the guess with if statement
+        //counting the number of guesses 
+        int guessCount = 0;
 
         while (magic != number)
         {
@@ -41,18 +43,26 @@ class Program
             if (magic==number)
             {
                 Console.WriteLine("You did it!");
-
+                guessCount +=1;
             }
             else if ( magic > number)
             {
                 Console.WriteLine("Higher!");
+                guessCount +=1;
 
             }
             else
             {
                 Console.WriteLine("Lower!");
-
+                guessCount +=1;
             }
         }
+        Console.WriteLine($"You did it. It took you {guessCount} tries to guess.");
    }
+
+
+
 }
+
+// I tried stretch challenge, I could get the counter to work
+//but not the yes to work. Maybe I will look up a tutoral. 
